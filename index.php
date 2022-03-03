@@ -6,7 +6,7 @@ if (empty($date_request)) {
         "ok" => "false",
         "status" => "400",
         "Message" => "Parameter in yyyy-mm-dd was required",
-    ));
+    ), JSON_PRETTY_PRINT);
 } else {
     if ($date_request == "all") {
         $url =
@@ -138,7 +138,7 @@ if (empty($date_request)) {
                     "ok" => "false",
                     "status" => "404", 
                     "Message" => "Invalid date, please try again!",
-                ));
+                ), JSON_PRETTY_PRINT);
             } else {
                 $data2 = json_decode($data);
                 $datedata = $data2[$array_number];
