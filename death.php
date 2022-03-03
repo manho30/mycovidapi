@@ -6,7 +6,7 @@ if (empty($date_request)) {
     echo json_encode(array(
         "ok"=> false, 
         "status" => 400,
-        "description" "Parameter in yyyy-mm-dd was required" , 
+        "description" => "Parameter in yyyy-mm-dd was required" , 
     ), JSON_PRETTY_PRINT);
     
 } else {
@@ -49,7 +49,7 @@ if (empty($date_request)) {
         $data = json_encode($final_data);
         echo $data;
     } else {
-        if ($date_request == "latest") {
+        if ($date_request == "now") {
             $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_malaysia.csv";
 
             $curl = curl_init($url);
