@@ -1,42 +1,53 @@
 <?php
-$url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
+// parameter
+$date_request = $_GET["date"];
 
-// no parameter
-if (empty($_GET["date"])) {
-    header("Content-type: application/json");    
+if (empty($date_request)) {
+    header("Content-type: application/json");
+    
     echo json_encode(array(
         "ok" => false,
         "status" => 400,
         "message" => "Parameter in yyyy-mm-dd was required",
-    ), JSON_PRETTY_PRINT);    
+    ), JSON_PRETTY_PRINT);
+    
 } else {
-    // request all data
-    if ($_GET["date"] == "all") {
+    if ($date_request == "all") {
+        $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
+
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        $response = curl_exec($curl);
+        //for debug only!
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+        $resp = curl_exec($curl);
         curl_close($curl);
 
-        $label_name = [];
+        $column_name = [];
+
         $final_data = [];
 
         $data_array = array_map("str_getcsv", explode("\n", $resp));
-        $all_labels_array = array_shift($data_array);
 
-        foreach ($all_labels_array as $label) {
-            $label_name[] = $label;
+        $labels = array_shift($data_array);
+
+        foreach ($labels as $label) {
+            $column_name[] = $label;
         }
 
         $count = count($data_array) - 1;
 
-        for ($i = 0; $i < $count; $i++) {
-            $data = array_combine($label_name, $data_array[$i]);
-            $new_data[$i] = $data;
+        for ($j = 0; $j < $count; $j++) {
+            $data = array_combine($column_name, $data_array[$j]);
+
+            $final_data[$j] = $data;
         }
 
-        header("Content-type: application/json");        
+        header("Content-type: application/json");
+        
         echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
@@ -44,7 +55,7 @@ if (empty($_GET["date"])) {
             ), JSON_PRETTY_PRINT);
             
     } else {
-        if ($_GET["date"] == "now") {
+        if ($date_request == "now") {
             $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
 
             $curl = curl_init($url);
@@ -58,7 +69,7 @@ if (empty($_GET["date"])) {
             $resp = curl_exec($curl);
             curl_close($curl);
 
-            $label_name = [];
+            $column_name = [];
 
             $final_data = [];
 
@@ -67,13 +78,13 @@ if (empty($_GET["date"])) {
             $labels = array_shift($data_array);
 
             foreach ($labels as $label) {
-                $label_name[] = $label;
+                $column_name[] = $label;
             }
 
             $count = count($data_array) - 1;
 
             for ($j = 0; $j < $count; $j++) {
-                $data = array_combine($label_name, $data_array[$j]);
+                $data = array_combine($column_name, $data_array[$j]);
 
                 $final_data[$j] = $data;
             }
@@ -107,7 +118,7 @@ if (empty($_GET["date"])) {
             $resp = curl_exec($curl);
             curl_close($curl);
 
-            $label_name = [];
+            $column_name = [];
 
             $final_data = [];
 
@@ -116,13 +127,13 @@ if (empty($_GET["date"])) {
             $labels = array_shift($data_array);
 
             foreach ($labels as $label) {
-                $label_name[] = $label;
+                $column_name[] = $label;
             }
 
             $count = count($data_array) - 1;
 
             for ($j = 0; $j < $count; $j++) {
-                $data = array_combine($label_name, $data_array[$j]);
+                $data = array_combine($column_name, $data_array[$j]);
 
                 $final_data[$j] = $data;
             }
@@ -131,7 +142,7 @@ if (empty($_GET["date"])) {
             $data = json_encode($final_data);
 
             $array_number = array_search(
-                $_GET["date"],
+                $date_request,
                 array_column(json_decode($data, true), "date")
             );
             if ($array_number == "") {
@@ -150,4 +161,3 @@ if (empty($_GET["date"])) {
         }
     }
 }
-?>
