@@ -7,7 +7,7 @@ if ($date_request == "") {
         "ok" => false, 
         "status" => 400,
         "description" => "Parameter in yyyy-mm-dd was required", 
-    ), JSON_PRETTY_PRINT);
+    ));
 } else {
     if ($date_request == "all") {
         $url =
@@ -50,7 +50,7 @@ if ($date_request == "") {
                 "ok"=> true, 
                 "status" => 200,
                 "result" => $final_data, 
-            ), JSON_PRETTY_PRINT);
+            ));
 
     } else {
         if ($date_request == "now") {
@@ -105,7 +105,7 @@ if ($date_request == "") {
                     "ok"=> true, 
                     "status" => 200,
                     "result" => $latest_date, 
-                ), JSON_PRETTY_PRINT);
+                ));
                 
             // if has parameter for state 
             } else {
@@ -121,7 +121,7 @@ if ($date_request == "") {
                         "ok"=> false, 
                         "status" => 400,
                         "description" => "Invalid state, please try again!",
-                    ), JSON_PRETTY_PRINT);
+                    ));
                     
                 } else {
                     header("Content-type: application/json");
@@ -130,7 +130,7 @@ if ($date_request == "") {
                         "ok"=> true, 
                         "status" => 200,
                         "result" => $latest_date[$array_number], 
-                    ), JSON_PRETTY_PRINT);
+                    ));
                 }
             }
         } else {
@@ -188,7 +188,7 @@ if ($date_request == "") {
                     "ok" => false,
                     "status" => 404, 
                     "message" => "Invalid date, please try again!",
-                ), JSON_PRETTY_PRINT); 
+                )); 
                 
             } else {
                 $state_request = $_GET["state"];
@@ -199,7 +199,7 @@ if ($date_request == "") {
                         "ok"=> true, 
                         "status" => 200,
                         "result" =>$latest_date_data, 
-                    ), JSON_PRETTY_PRINT);
+                    ));
                     
                 } else {
                     $array_number = array_search(
@@ -213,7 +213,7 @@ if ($date_request == "") {
                             "ok" => false,
                             "status" => 404, 
                             "message" => "Invalid date, please try again!",
-                        ), JSON_PRETTY_PRINT);
+                        ));
                         
                     } else {
                         header("Content-type: application/json");
