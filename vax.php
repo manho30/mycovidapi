@@ -66,40 +66,41 @@ if (empty($date_request)) {
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-            $response = curl_exec($curl);
+            $resp = curl_exec($curl);
             curl_close($curl);
 
-            $label_list = [];
-            $done = [];
-            
-            // split csv in array of arrays form
-            $data = array_map("str_getcsv", explode("\n", $response));
+            $column_name = [];
 
-            // remove first line label
-            $labels = array_shift($data);
+            $final_data = [];
 
-            // store label data to array 
+            $data_array = array_map("str_getcsv", explode("\n", $resp));
+
+            $labels = array_shift($data_array);
+
             foreach ($labels as $label) {
-                $label_list[] = $label;
+                $column_name[] = $label;
             }
-            
-            // array length
-            // array start from 0, so -1.
+
             $count = count($data_array) - 1;
 
-            for ($i = 0; $i < $count; $i++) {
-                $done[$i] = array_combine($label_list, $data[$i]);
+            for ($j = 0; $j < $count; $j++) {
+                $data = array_combine($column_name, $data_array[$j]);
+
+                $final_data[$j] = $data;
             }
 
             header("Content-type: application/json");
-            $json_done = json_decode(json_encode($done));
-            $new_data = count($done) - 1;
-            $reqdata = $json_done[$new_data];
+            $data1 = json_encode($final_data);
+
+            $data2 = json_decode($data1);
+            $latest1 = count($data2);
+            $latest = $latest1 - 1;
+            $datedata = $data2[$latest];
             
             echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
-                "result" =>$reqdata, 
+                "result" =>$datedata, 
             ), JSON_PRETTY_PRINT);
             
         } else {
@@ -160,3 +161,4 @@ if (empty($date_request)) {
         }
     }
 }
+?>
