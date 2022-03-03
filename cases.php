@@ -1,14 +1,12 @@
 <?php
 $date_request = $_GET["date"];
-if (empty($date_request)) { 
+if (empty($date_request)) {
+    $json = [
+        "Status" => "Fail",
+        "Message" => "Did not provide date according to format : YYYY-MM-DD",
+    ];
     header("Content-type: application/json");
-
-    echo json_encode(array(
-        "ok" => false, 
-        "status" => 400,
-        "description" => "Parameter in yyyy-mm-dd was required", 
-    ), JSON_PRETTY_PRINT);
-
+    echo json_encode($json);
 } else {
     if ($date_request == "all") {
         $url =
@@ -47,15 +45,9 @@ if (empty($date_request)) {
 
         header("Content-type: application/json");
         $data = json_encode($final_data);
-
-        echo json_encode(array(
-            "ok"=> true, 
-            "status" => 200,
-            "result" => $data , 
-        ), JSON_PRETTY_PRINT);
-
+        echo $data;
     } else {
-        if ($date_request == "now") {
+        if ($date_request == "latest") {
             $url =
                 "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_malaysia.csv";
 
@@ -97,13 +89,7 @@ if (empty($date_request)) {
             $latest1 = count($data2);
             $latest = $latest1 - 1;
             $datedata = $data2[$latest];
-
-            echo json_encode(array(
-                "ok"=> true, 
-                "status" => 200,
-                "result" => json_encode($datedata) , 
-            ), JSON_PRETTY_PRINT);
-
+            echo json_encode($datedata);
         } else {
             $url =
                 "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_malaysia.csv";
@@ -147,12 +133,13 @@ if (empty($date_request)) {
                 array_column(json_decode($data, true), "date")
             );
             if ($array_number == "") {
+                $json = [
+                    "Status" => "Fail",
+                    "Message" =>
+                        "Could not find date provided! Please try again! Please try after midnight if you wanted to retrieve the latest data!",
+                ];
                 header("Content-type: application/json");
-                echo json_encode(array(
-                    "ok"=> true, 
-                    "status" => 200,
-                    "description" => "Invalid date, please try again!", 
-                ), JSON_PRETTY_PRINT);
+                echo json_encode($json);
             } else {
                 $data2 = json_decode($data);
                 $datedata = $data2[$array_number];
