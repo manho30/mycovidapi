@@ -47,7 +47,11 @@ if (empty($date_request)) {
 
         header("Content-type: application/json");
 
-        echo json_encode($final_data);
+        echo json_encode(array(
+                "ok"=> true, 
+                "status" => 200,
+                "result" => $final_data, 
+            ), JSON_PRETTY_PRINT);
 
     } else {
         if ($date_request == "now") {
