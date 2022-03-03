@@ -1,16 +1,19 @@
 <?php
+// parameter
 $date_request = $_GET["date"];
+
 if (empty($date_request)) {
     header("Content-type: application/json");
+    
     echo json_encode(array(
         "ok" => "false",
         "status" => "400",
         "message" => "Parameter in yyyy-mm-dd was required",
     ), JSON_PRETTY_PRINT);
+    
 } else {
     if ($date_request == "all") {
-        $url =
-            "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
+        $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -44,12 +47,16 @@ if (empty($date_request)) {
         }
 
         header("Content-type: application/json");
-        $data = json_encode($final_data, JSON_PRETTY_PRINT);
-        echo $data;
+        
+        echo json_encode(array(
+                "ok"=> "true", 
+                "status" => "200",
+                "result" =>$datedata, 
+            ), JSON_PRETTY_PRINT);
+            
     } else {
         if ($date_request == "now") {
-            $url =
-                "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
+            $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
 
             $curl = curl_init($url);
             curl_setopt($curl, CURLOPT_URL, $url);
@@ -91,9 +98,9 @@ if (empty($date_request)) {
             $datedata = $data2[$latest];
             
             echo json_encode(array(
-            "ok"=> "true", 
-            "status" => "200",
-            "message" =>$datedata, 
+                "ok"=> "true", 
+                "status" => "200",
+                "result" =>$datedata, 
             ), JSON_PRETTY_PRINT);
             
         } else {
