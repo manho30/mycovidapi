@@ -6,7 +6,7 @@ if (empty($date_request)) {
     echo json_encode(array(
         "ok"=> false, 
         "status" => 400,
-        "description" "Parameter in yyyy-mm-dd was required", 
+        "description" => "Parameter in yyyy-mm-dd was required", 
     ), JSON_PRETTY_PRINT);
 
 } else {
