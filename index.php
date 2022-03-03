@@ -44,8 +44,7 @@ if (empty($date_request)) {
         }
 
         header("Content-type: application/json");
-        $data = json_encode($final_data);
-        echo $data;
+        echo = json_encode($final_data, JSON_PRETTY_PRINT);
     } else {
         if ($date_request == "now") {
             $url =
@@ -89,7 +88,7 @@ if (empty($date_request)) {
             $latest1 = count($data2);
             $latest = $latest1 - 1;
             $datedata = $data2[$latest];
-            echo json_encode($datedata);
+            echo json_encode($datedata, JSON_PRETTY_PRINT);
         } else {
             $url =
                 "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
@@ -142,7 +141,7 @@ if (empty($date_request)) {
             } else {
                 $data2 = json_decode($data);
                 $datedata = $data2[$array_number];
-                echo json_encode($datedata);
+                echo json_encode($datedata, JSON_PRETTY_PRINT);
             }
             exit();
         }
