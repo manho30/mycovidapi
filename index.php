@@ -6,7 +6,7 @@ if (empty($date_request)) {
         "ok" => "false",
         "status" => "400",
         "Message" => "Parameter in yyyy-mm-dd was required",
-    ), JSON_PRETTY_PRINT);
+    ));
 } else {
     if ($date_request == "all") {
         $url =
@@ -44,7 +44,8 @@ if (empty($date_request)) {
         }
 
         header("Content-type: application/json");
-        echo = json_encode($final_data, JSON_PRETTY_PRINT);
+        $data = json_encode($final_data);
+        echo $data;
     } else {
         if ($date_request == "now") {
             $url =
@@ -88,7 +89,7 @@ if (empty($date_request)) {
             $latest1 = count($data2);
             $latest = $latest1 - 1;
             $datedata = $data2[$latest];
-            echo json_encode($datedata, JSON_PRETTY_PRINT);
+            echo json_encode($datedata);
         } else {
             $url =
                 "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
@@ -137,11 +138,11 @@ if (empty($date_request)) {
                     "ok" => "false",
                     "status" => "404", 
                     "Message" => "Invalid date, please try again!",
-                ), JSON_PRETTY_PRINT);
+                ));
             } else {
                 $data2 = json_decode($data);
                 $datedata = $data2[$array_number];
-                echo json_encode($datedata, JSON_PRETTY_PRINT);
+                echo json_encode($datedata);
             }
             exit();
         }
