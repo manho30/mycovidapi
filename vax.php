@@ -6,8 +6,8 @@ if (empty($date_request)) {
     header("Content-type: application/json");
     
     echo json_encode(array(
-        "ok" => "false",
-        "status" => "400",
+        "ok" => false,
+        "status" => 400,
         "message" => "Parameter in yyyy-mm-dd was required",
     ), JSON_PRETTY_PRINT);
     
@@ -49,8 +49,8 @@ if (empty($date_request)) {
         header("Content-type: application/json");
         
         echo json_encode(array(
-                "ok"=> "true", 
-                "status" => "200",
+                "ok"=> true, 
+                "status" => 200,
                 "result" => $final_data, 
             ), JSON_PRETTY_PRINT);
             
@@ -98,8 +98,8 @@ if (empty($date_request)) {
             $datedata = $data2[$latest];
             
             echo json_encode(array(
-                "ok"=> "true", 
-                "status" => "200",
+                "ok"=> true, 
+                "status" => 200,
                 "result" =>$datedata, 
             ), JSON_PRETTY_PRINT);
             
@@ -148,8 +148,8 @@ if (empty($date_request)) {
             if ($array_number == "") {
                 header("Content-type: application/json");
                 echo json_encode(array(
-                    "ok" => "false",
-                    "status" => "404", 
+                    "ok" => false,
+                    "status" => 404, 
                     "message" => "Invalid date, please try again!",
                 ), JSON_PRETTY_PRINT);
             } else {
