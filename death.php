@@ -7,7 +7,7 @@ if (empty($date_request)) {
         "ok"=> false, 
         "status" => 400,
         "description" => "Parameter in yyyy-mm-dd was required" , 
-    ), JSON_PRETTY_PRINT);
+    ));
     
 } else {
     if ($date_request == "all") {
@@ -95,7 +95,7 @@ if (empty($date_request)) {
                 "ok"=> true, 
                 "status" => 200,
                 "result" => $datedata, 
-            ), JSON_PRETTY_PRINT);
+            ));
             
         } else {
             $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_malaysia.csv";
@@ -145,12 +145,16 @@ if (empty($date_request)) {
                     "ok"=> false, 
                     "status" => 400,
                     "description" => "Invalid date, please try again!" , 
-                ), JSON_PRETTY_PRINT);
+                ));
                 
             } else {
                 $data2 = json_decode($data);
                 $datedata = $data2[$array_number];
-                echo json_encode($datedata);
+                echo json_encode(array(
+                    "ok"=> true, 
+                    "status" => 200,
+                    "result" =>$datedata, 
+                ));
             }
             exit();
         }
