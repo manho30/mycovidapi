@@ -9,7 +9,7 @@ if (empty($date_request)) {
         "ok" => false,
         "status" => 400,
         "message" => "Parameter in yyyy-mm-dd was required",
-    ), JSON_PRETTY_PRINT);
+    ));
     
 } else {
     if ($date_request == "all") {
@@ -52,7 +52,7 @@ if (empty($date_request)) {
                 "ok"=> true, 
                 "status" => 200,
                 "result" => $final_data, 
-            ), JSON_PRETTY_PRINT);
+            ));
             
     } else {
         if ($date_request == "now") {
@@ -101,7 +101,7 @@ if (empty($date_request)) {
                 "ok"=> true, 
                 "status" => 200,
                 "result" =>$datedata, 
-            ), JSON_PRETTY_PRINT);
+            ));
             
         } else {
             $url =
@@ -151,11 +151,15 @@ if (empty($date_request)) {
                     "ok" => false,
                     "status" => 404, 
                     "message" => "Invalid date, please try again!",
-                ), JSON_PRETTY_PRINT);
+                ));
             } else {
                 $data2 = json_decode($data);
                 $datedata = $data2[$array_number];
-                echo json_encode($datedata, JSON_PRETTY_PRINT);
+                echo json_encode(array(
+                    "ok"=> true, 
+                    "status" => 200,
+                    "result" =>$datedata, 
+                ));
             }
             exit();
         }
