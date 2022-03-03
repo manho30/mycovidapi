@@ -51,7 +51,7 @@ if (empty($date_request)) {
         echo json_encode(array(
             "ok"=> true, 
             "status" => 200,
-            "description" => $data , 
+            "result" => $data , 
         ), JSON_PRETTY_PRINT);
 
     } else {
@@ -101,7 +101,7 @@ if (empty($date_request)) {
             echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
-                "description" => json_encode($datedata) , 
+                "result" => json_encode($datedata) , 
             ), JSON_PRETTY_PRINT);
 
         } else {
