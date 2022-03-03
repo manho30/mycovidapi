@@ -4,7 +4,7 @@ if (empty($date_request)) {
     header("Content-type: application/json");
 
     echo json_encode(array(
-        "ok"=> false, 
+        "ok" => false, 
         "status" => 400,
         "description" => "Parameter in yyyy-mm-dd was required", 
     ), JSON_PRETTY_PRINT);
