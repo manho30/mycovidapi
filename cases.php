@@ -51,7 +51,7 @@ if (empty($date_request)) {
             "ok"=> true, 
             "status" => 200,
             "result" => json_encode($final_data), 
-        ), JSON_PRETTY_PRINT);
+        ));
 
     } else {
         if ($date_request == "now") {
