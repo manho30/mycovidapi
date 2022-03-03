@@ -33,13 +33,11 @@ for ($j = 0; $j < $count; $j++) {
 }
 
 header("Content-type: application/json");
-header("Access-Control-Allow-Origin: *");
-$data = json_encode($final_data);
 
 echo json_encode(array(
     "ok"=> true, 
     "status" => 200,
-    "result" => $data, 
+    "result" => $final_data, 
 ), JSON_PRETTY_PRINT);
 
 ?>
