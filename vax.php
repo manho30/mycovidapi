@@ -22,7 +22,7 @@ if (empty($_GET["date"])) {
         $label_name = [];
         $final_data = [];
 
-        $data_array = array_map("str_getcsv", explode("\n", $response));
+        $data_array = array_map("str_getcsv", explode("\n", $resp));
         $all_labels_array = array_shift($data_array);
 
         foreach ($all_labels_array as $label) {
@@ -150,3 +150,4 @@ if (empty($_GET["date"])) {
         }
     }
 }
+?>
