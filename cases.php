@@ -100,7 +100,7 @@ if (empty($date_request)) {
             echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
-                "result" => json_encode($datedata), 
+                "result" => $datedata, 
             ), JSON_PRETTY_PRINT);
 
         } else {
