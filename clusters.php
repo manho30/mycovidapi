@@ -1,5 +1,5 @@
 <?php
-   $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/clusters.csv";
+$url ="https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/clusters.csv";
 
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_URL, $url);
@@ -12,32 +12,34 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 $resp = curl_exec($curl);
 curl_close($curl);
 
-      $column_name = array();
+$column_name = [];
 
-      $final_data = array();
+$final_data = [];
 
+$data_array = array_map("str_getcsv", explode("\n", $resp));
 
+$labels = array_shift($data_array);
 
-      $data_array = array_map("str_getcsv", explode("\n", $resp));
+foreach ($labels as $label) {
+    $column_name[] = $label;
+}
 
-      $labels = array_shift($data_array);
+$count = count($data_array) - 1;
 
-      foreach($labels as $label)
-      {
-        $column_name[] = $label;
-      }
+for ($j = 0; $j < $count; $j++) {
+    $data = array_combine($column_name, $data_array[$j]);
 
-      $count = count($data_array) - 1;
+    $final_data[$j] = $data;
+}
 
-      for($j = 0; $j < $count; $j++)
-      {
-        $data = array_combine($column_name, $data_array[$j]);
-
-        $final_data[$j] = $data;
-      }
-
-     
-      header('Content-type: application/json');  header('Access-Control-Allow-Origin: *');
+header("Content-type: application/json");
+header("Access-Control-Allow-Origin: *");
 $data = json_encode($final_data);
-echo $data;
+
+echo json_encode(array(
+    "ok"=> true, 
+    "status" => 200,
+    "result" => $data, 
+), JSON_PRETTY_PRINT);
+
 ?>
