@@ -38,6 +38,6 @@ echo json_encode(array(
     "ok"=> true, 
     "status" => 200,
     "result" => $final_data, 
-), JSON_PRETTY_PRINT);
+));
 
 ?>
