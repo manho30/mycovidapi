@@ -66,41 +66,40 @@ if (empty($date_request)) {
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-            $resp = curl_exec($curl);
+            $response = curl_exec($curl);
             curl_close($curl);
 
-            $column_name = [];
+            $label_list = [];
+            $done = [];
+            
+            // split csv in array of arrays form
+            $data = array_map("str_getcsv", explode("\n", $response));
 
-            $final_data = [];
+            // remove first line label
+            $labels = array_shift($data);
 
-            $data_array = array_map("str_getcsv", explode("\n", $resp));
-
-            $labels = array_shift($data_array);
-
+            // store label data to array 
             foreach ($labels as $label) {
-                $column_name[] = $label;
+                $label_list[] = $label;
             }
-
+            
+            // array length
+            // array start from 0, so -1.
             $count = count($data_array) - 1;
 
-            for ($j = 0; $j < $count; $j++) {
-                $data = array_combine($column_name, $data_array[$j]);
-
-                $final_data[$j] = $data;
+            for ($i = 0; $i < $count; $i++) {
+                $done[$i] = array_combine($label_list, $data[$i]);
             }
 
             header("Content-type: application/json");
-            $data1 = json_encode($final_data);
-
-            $data2 = json_decode($data1);
-            $latest1 = count($data2);
-            $latest = $latest1 - 1;
-            $datedata = $data2[$latest];
+            $json_done = json_decode(json_encode($done));
+            $new_data = count($done) - 1;
+            $reqdata = $json_done[$new_data];
             
             echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
-                "result" =>$datedata, 
+                "result" =>$reqdata, 
             ), JSON_PRETTY_PRINT);
             
         } else {
