@@ -1,7 +1,7 @@
 <?php
 $date_request = $_GET["date"];
 if (empty($date_request)) {
-   $json = array("Status"=>"Fail","Message"=>"Did not provide date according to format : YYYY-MM-DD");
+   $json = array("Status"=>"Fail","Message"=>"Sorry, the date in format yyyy-mm-dd was required.");
     header('Content-type: application/json');
    echo (json_encode($json));
    
@@ -49,7 +49,7 @@ curl_close($curl);
 $data = json_encode($final_data);
 echo $data;
 } else {
-if ($date_request == "latest"){
+if ($date_request == "now"){
    $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
 
 $curl = curl_init($url);
@@ -142,7 +142,7 @@ $data = json_encode($final_data);
    
 $array_number = array_search($date_request, array_column(json_decode($data, true), "date"));
 if ($array_number == "") {
-      $json = array("Status"=>"Fail","Message"=>"Could not find date provided! Please try again! Please try after midnight if you wanted to retrieve the latest data!");
+      $json = array("Status"=>"Fail","Message"=>"Sorry, found nothing!");
        header('Content-type: application/json');
    echo (json_encode($json));
 } else {
