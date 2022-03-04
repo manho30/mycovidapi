@@ -1,5 +1,5 @@
 <?php
-$url ="https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/clusters.csv";
+$url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/static/population.csv";
 
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_URL, $url);
