@@ -97,7 +97,7 @@ if ($date_request == "") {
             $full_data_array = array_chunk($full_data, 16);
                         
             // get last array element 
-            $now_data = $fully_data_array[count($full_data_array) - 1 ];
+            $now_data = $full_data_array[count($full_data_array) - 1 ];
             
             //state parameter 
             $state_request = $_GET["state"];
@@ -111,7 +111,7 @@ if ($date_request == "") {
                 echo json_encode(array(
                     "ok"=> true, 
                     "status" => 2000,
-                    "result" => $full_data_array
+                    "result" => $now_data
                 ));
                 
             // if has parameter for state 
