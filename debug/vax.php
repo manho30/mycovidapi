@@ -1,6 +1,6 @@
 <?php
 
-$param = $_GET["date"]
+$param = $_GET["date"];
 $repo_url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
 
 // no parameter
