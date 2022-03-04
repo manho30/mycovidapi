@@ -93,7 +93,7 @@ if ($date_request == "") {
                 $final_data[$j] = $data;
             }
 
-            $final_data2 = array_splice($final_data, - 4320) //4320 / 15 = 288
+            $final_data2 = array_splice($final_data, - 4320); //4320 / 15 = 288
 
             header("Content-type: application/json");
             
