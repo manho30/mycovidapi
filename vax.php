@@ -4,7 +4,7 @@ $date_request = $_GET["date"];
 
 if (empty($date_request)) {
     header("Content-type: application/json");
-    
+    http_response_code(404);
     echo json_encode(array(
         "ok" => false,
         "status" => 400,
