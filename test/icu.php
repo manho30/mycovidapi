@@ -61,7 +61,7 @@ if ($date_request == "") {
         echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
-                "result" => $final_data, 
+                "result" => $full_data_array, 
         ));
 
     } else {
