@@ -30,19 +30,20 @@ if(is_null($param)){
         foreach ($data_name as $name) {
             $name_array[] = $name;
         }
+
         $final_data = [];
         for ($i = 0; $i < $count; $i++) {
             $data = array_combine($name_array, $data_array[$i]);
             
             $final_data[$j] = $data;
         }        
+
         header("Content-type: application/json");        
         echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
                 "result" => $final_data, 
         ));
-
     }
 }
 ?>
