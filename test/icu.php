@@ -98,16 +98,12 @@ if ($date_request == "") {
             // actually it's 4320 but some 
             // unknown isue it will 
             // skip 1 day data
-            $full_no_putra_data = array_splice($final_data, 4305 - 1);
             $full_data = array_splice($final_data, - 4305); 
           
             $full_data_array = array_chunk($full_data, 16);
-            $no_putra_array = array_chunk($full_no_putra_data, 15);
                         
-            $fully_data = array_push($no_putra_array, $full_data_array);
-            
             // get last array element 
-            $now_date = $fully_data[count($full_data_array) - 1 ];
+            $now_data = $fully_data_array[count($full_data_array) - 1 ];
             
             //state parameter 
             $state_request = $_GET["state"];
@@ -121,7 +117,7 @@ if ($date_request == "") {
                 echo json_encode(array(
                     "ok"=> true, 
                     "status" => 200,
-                    "result" => $now_date
+                    "result" => $now_data
                 ));
                 
             // if has parameter for state 
