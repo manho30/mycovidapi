@@ -3,8 +3,8 @@
 $date_request = $_GET["date"];
 
 if (
-    !$_SERVER[REQUEST_METHOD] === "GET" ||
-    !$_SERVER[REQUEST_METHOD] === "POST"
+    $_SERVER[REQUEST_METHOD] != "GET" ||
+    $_SERVER[REQUEST_METHOD] != "POST"
 ) {
     header("Content-type: application/json");
 
