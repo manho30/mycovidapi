@@ -93,13 +93,11 @@ if ($date_request == "") {
                 $final_data[$j] = $data;
             }
 
-            //for ($i = 0; i < 288 - 1; $i++){
-            //    unset($final_data[$i]);
-            //}
+            $final_data2 = array_splice($final_data, - 4320) //4320 / 15 = 288
 
             header("Content-type: application/json");
             
-            $data = array_chunk($final_data, 16);
+            $data = array_chunk($final_data2, 16);
             $count = count($data);
             $latest_date_count = $count - 1;
             $latest_date = $data[$latest_date_count];
