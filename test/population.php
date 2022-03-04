@@ -34,6 +34,6 @@ http_response_code(200);
 echo json_encode(array(
     "ok" => true,
     "status" => 200,
-    "result" => $final_data,
+    "result" => "Hello World" ,
 ));
 ?>
