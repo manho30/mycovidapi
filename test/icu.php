@@ -93,8 +93,8 @@ if ($date_request == "") {
                 $final_data[$j] = $data;
             }
 
-            for ($i = 0; i < 288 - 1; i++){
-                $no_putrajaya = unset($final_data[i])
+            for ($i = 0; i < 288 - 1; $i++){
+                unset($final_data[i]);
             }
 
             header("Content-type: application/json");
@@ -118,8 +118,8 @@ if ($date_request == "") {
                     //"result" => 
 echo json_encode(array(
 "final" => $data, 
-"noputra" => $no_putrajaya, 
-))
+"noputra" => ".", 
+));
                 //));
                 
             // if has parameter for state 
