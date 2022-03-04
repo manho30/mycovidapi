@@ -43,20 +43,23 @@ if ($date_request == "") {
             $data = array_combine($column_name, $data_array[$j]);
             $final_data[$j] = $data;
         }
-        
-//        make the every single day data to array of arrays from
-//        only the data start from 5 Jan 2021 providing Putrajaya icu data 
-//        $full_data = $final_data;
-//        $final_full_data = array_splice($full_data, 4320); 
 
-//        before 5 Jan 2021 the Putrajaya data was missing 
-//        $final_notfull_data = $final_data;
-//        $array_splice($final_notfull_data, 4320);
 
-//        $full_data_array = array_chunk($final_full_data, 16);
-//        $notfull_data_array = array_chunk($final_notfull_data, 15);
+//      My skill too trash, i can't make the old data be format :(
 
-//        $final_data = array_merge($full_data_array, $notfull_data_array);
+//      make the every single day data to array of arrays from
+//      only the data start from 7 May 2021 providing Putrajaya icu data 
+        $full_data = $final_data;
+        $final_full_data = array_splice($full_data, 6137); 
+
+//      before 5 Jan 2021 the Putrajaya data was missing 
+//      $final_notfull_data = $final_data;
+//      $array_splice($final_notfull_data, 6137);
+
+        $full_data_array = array_chunk($final_full_data, 16);
+//      $notfull_data_array = array_chunk($final_notfull_data, 15);
+
+//      $final_data = array_merge($full_data_array, $notfull_data_array);
         header("Content-type: application/json");
 
         http_response_code(200);
@@ -64,7 +67,7 @@ if ($date_request == "") {
         echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
-                "result" => $final_data, //$full_data_array, 
+                "result" => $full_data_array, 
         ));
 
     } else {
