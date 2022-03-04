@@ -93,6 +93,10 @@ if ($date_request == "") {
                 $final_data[$j] = $data;
             }
 
+            for ($i = 0; i < 288 - 1; i++){
+                $no_putrajaya = unset($final_data[i])
+            }
+
             header("Content-type: application/json");
             
             $data = array_chunk($final_data, 16);
@@ -112,7 +116,10 @@ if ($date_request == "") {
                     //"ok"=> true, 
                     //"status" => 200,
                     //"result" => 
-echo json_encode($data);
+echo json_encode(array(
+"final" => $data, 
+"noputra" => $no_putrajaya, 
+))
                 //));
                 
             // if has parameter for state 
