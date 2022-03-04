@@ -108,11 +108,12 @@ if ($date_request == "") {
                 
                 http_response_code(200);
 
-                echo json_encode(array(
-                    "ok"=> true, 
-                    "status" => 200,
-                    "result" => $latest_date, 
-                ));
+                //echo json_encode(array(
+                    //"ok"=> true, 
+                    //"status" => 200,
+                    //"result" => 
+echo $data_array;
+                //));
                 
             // if has parameter for state 
             } else {
