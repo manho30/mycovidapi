@@ -3,6 +3,9 @@
 $date_request = $_GET["date"];
 if ($date_request == "") {
     header("Content-type: application/json");
+
+    http_response_code(400);
+
     echo json_encode(array(
         "ok" => false, 
         "status" => 400,
@@ -45,6 +48,8 @@ if ($date_request == "") {
         }
 
         header("Content-type: application/json");
+
+        http_response_code(200);
 
         echo json_encode(array(
                 "ok"=> true, 
@@ -101,6 +106,8 @@ if ($date_request == "") {
             if (empty($state_request)) {
                 header("Content-type: application/json");
                 
+                http_response_code(200);
+
                 echo json_encode(array(
                     "ok"=> true, 
                     "status" => 200,
@@ -117,14 +124,18 @@ if ($date_request == "") {
                     
                     header("Content-type: application/json");
                     
+                    http_response_code(400);
+
                     echo json_encode(array(
                         "ok"=> false, 
                         "status" => 400,
-                        "description" => "Invalid state, please try again!",
+                        "description" => "Invalid state or no such data from Malaysia Database! Please try again!",
                     ));
                     
                 } else {
                     header("Content-type: application/json");
+
+                    http_response_code(200);
                     
                     echo json_encode(array(
                         "ok"=> true, 
@@ -183,17 +194,21 @@ if ($date_request == "") {
             $output_date_data = $latest_date_data[0]["date"];
             if ($output_date_data !== $date_request) {                
                 header("Content-type: application/json");
-                
+   
+                http_response_code(404);
+             
                 echo json_encode(array(
                     "ok" => false,
                     "status" => 404, 
-                    "message" => "Invalid date, please try again!",
+                    "message" => "Invalid date or no such data from Malaysia Database! Please try again!",
                 )); 
                 
             } else {
                 $state_request = $_GET["state"];
                 if (empty($state_request)) {
                     header("Content-type: application/json");
+
+                    http_response_code(200);
                     
                     echo json_encode(array(
                         "ok"=> true, 
@@ -209,16 +224,26 @@ if ($date_request == "") {
                     if ($array_number == "") {
                         
                         header("Content-type: application/json");
+
+                        http_response_code(404);
+
                         echo json_encode(array(
                             "ok" => false,
                             "status" => 404, 
-                            "message" => "Invalid date, please try again!",
+                            "message" => "Invalid date or no such data from Malaysia Database! Please try again!",
                         ));
                         
                     } else {
                         header("Content-type: application/json");
                         header("Access-Control-Allow-Origin: *");
-                        echo json_encode($latest_date_data[$array_number]);
+
+                        http_response_code(200);
+
+                        echo json_encode(array(
+                            "ok"=> true, 
+                            "status" => 200,
+                            "result" => json_encode($latest_date_data[$array_number]), 
+                        ));
                     }
                 }
             }
