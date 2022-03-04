@@ -74,7 +74,6 @@ if ($date_request == "") {
             curl_close($curl);
 
             $column_name = [];
-
             $final_data = [];
 
             $data_array = array_map("str_getcsv", explode("\n", $resp));
@@ -92,32 +91,38 @@ if ($date_request == "") {
 
                 $final_data[$j] = $data;
             }
-
-            $final_data2 = array_splice($final_data, - 4320); //4320 / 15 = 288
-
-            header("Content-type: application/json");
+            // delete 4320 element from data array 
+            // there is missing "putrajaya" information 
+            // before section 4321 data 
+            // 
+            // actually it's 4320 but some 
+            // unknown isue it will 
+            // skip 1 day data
+            $full_no_putra_data = array_splice($final_data, 4305 - 1);
+            $full_data = array_splice($final_data, - 4305); 
+          
+            $full_data_array = array_chunk($full_data, 16);
+            $no_putra_array = array_chunk($full_no_putra_data, 15);
+                        
+            $fully_data = array_push($no_putra_array, $full_data_array);
             
-            $data = array_chunk($final_data2, 16);
-            $count = count($data);
-            $latest_date_count = $count - 1;
-            $latest_date = $data[$latest_date_count];
+            // get last array element 
+            $now_date = $fully_data[count($full_data_array) - 1 ];
             
-            //param 
+            //state parameter 
             $state_request = $_GET["state"];
-            
+           
+            // no specify parameterized
             if (empty($state_request)) {
                 header("Content-type: application/json");
                 
                 http_response_code(200);
 
-                //echo json_encode(array(
-                    //"ok"=> true, 
-                    //"status" => 200,
-                    //"result" => 
-echo json_encode(array(
-"final" => $data,
-));
-                //));
+                echo json_encode(array(
+                    "ok"=> true, 
+                    "status" => 200,
+                    "result" => $now_data
+                ));
                 
             // if has parameter for state 
             } else {
@@ -256,4 +261,3 @@ echo json_encode(array(
     }
 }
 ?>
- 
