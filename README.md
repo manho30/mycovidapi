@@ -150,8 +150,8 @@ fetch("http://mycovidapi.herokuapp.com/death.php?date=now)
 | now         | date=now          | Get today's data         |
 | yyyy/mm/dd  | date=2022-01-31   | Get a specific date data |
 
-
-
+### Credit 
+Credit to [samleong123](https://github.com/samleong123/COVID-19-Malaysia-API)
 
 
 ## Data source
