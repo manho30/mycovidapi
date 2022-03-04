@@ -46,14 +46,15 @@ if ($date_request == "") {
 
         // make the every single day data to array of arrays from
         // only the data start from 5 Jan 2021 providing Putrajaya icu data 
-        $full_data = array_splice($final_data, - 4320); 
+        $full_data = $final_data;
+        $final_full_data = array_splice($full_data, - 4320); 
 
         // before 5 Jan 2021 the Putrajaya data was missing 
-        $notfull_data = $final_data;
-        array_splice($notfull_data, 4320);
+        $final_notfull_data = $final_data;
+        array_splice($final_notfull_data, 4320);
 
-        $full_data_array = array_chunk($full_data, 16);
-        $notfull_data_array = array_chunk($notfull_data, 15);
+        $full_data_array = array_chunk($final_full_data, 16);
+        $notfull_data_array = array_chunk($final_notfull_data, 15);
 
         header("Content-type: application/json");
 
