@@ -7,6 +7,9 @@ echo json_encode(array(
     "message" => "Please specify a value! Refer to API documentation!",
     "documentation" => "https://manho30.github.io/mycovidapi/", 
 ));
+
+sleep(5);
+
 header("Location: https://manho30.github.io/mycovidapi/");
 
 exit();
