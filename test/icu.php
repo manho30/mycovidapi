@@ -94,7 +94,7 @@ if ($date_request == "") {
             }
 
             for ($i = 0; i < 288 - 1; $i++){
-                unset($final_data[i]);
+                unset($final_data[$i]);
             }
 
             header("Content-type: application/json");
