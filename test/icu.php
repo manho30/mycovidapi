@@ -92,7 +92,7 @@ if ($date_request == "") {
                 $final_data[$j] = $data;
             }
             
-            $full_data = array_splice($final_data, - 4305); 
+            $full_data = array_splice($final_data, - 4320); 
           
             $full_data_array = array_chunk($full_data, 16);
                         
