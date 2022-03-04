@@ -177,3 +177,4 @@ if (empty($date_request)) {
         }
     }
 }
+?>
