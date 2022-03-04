@@ -52,7 +52,7 @@ if ($date_request == "") {
         $notfull_data = array_splice($final_data, 4320);
 
         $full_data_array = array_chunk($full_data, 16);
-        $notfull_data_array = array_chunk($notfull_data, 15)
+        $notfull_data_array = array_chunk($notfull_data, 15);
 
         header("Content-type: application/json");
 
@@ -62,7 +62,7 @@ if ($date_request == "") {
                 "ok"=> true, 
                 "status" => 200,
                 "result" => $full_data_array, 
-            ));
+        ));
 
     } else {
         if ($date_request == "now") {
