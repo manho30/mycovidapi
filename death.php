@@ -48,14 +48,13 @@ if (empty($date_request)) {
         }
 
         header("Content-type: application/json");
-        $data = json_encode($final_data);
 
         http_response_code(200);
 
         echo json_encode(array(
             "ok"=> true, 
             "status" => 200,
-            "result" => $data, 
+            "result" => $final_data, 
         ));
 
     } else {
