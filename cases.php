@@ -3,6 +3,8 @@ $date_request = $_GET["date"];
 if (empty($date_request)) {
     header("Content-type: application/json");
 
+    http_response_code(400);
+
     echo json_encode(array(
         "ok"=> false, 
         "status" => 400,
@@ -46,6 +48,8 @@ if (empty($date_request)) {
         }
 
         header("Content-type: application/json");
+
+        http_response_code(200);
 
         echo json_encode(array(
                 "ok"=> true, 
@@ -96,6 +100,8 @@ if (empty($date_request)) {
             $latest1 = count($data2);
             $latest = $latest1 - 1;
             $datedata = $data2[$latest];
+
+            http_response_code(200);
 
             echo json_encode(array(
                 "ok"=> true, 
@@ -148,18 +154,30 @@ if (empty($date_request)) {
             if ($array_number == "") {
                 header("Content-type: application/json");
 
+                http_response_code(404);
+
                 echo json_encode(array(
                     "ok"=> false, 
-                    "status" => 400,
-                    "description" => "Invalid date, please try again!" , 
+                    "status" => 404,
+                    "description" => "Invalid date or no such data from Malaysia Database! Please try again!" , 
                 ));
 
             } else {
                 $data2 = json_decode($data);
                 $datedata = $data2[$array_number];
-                echo json_encode($datedata);
+
+                header("Content-type: application/json");
+
+                http_response_code(200);
+
+                echo json_encode(array(
+                    "ok"=> true, 
+                    "status" => 200,
+                    "result" => $datedata, 
+                ));
             }
             exit();
         }
     }
 }
+?>
