@@ -38,14 +38,21 @@ if ($date_request == "") {
         foreach ($labels as $label) {
             $column_name[] = $label;
         }
-
-        $count = count($data_array) - 1;
-
-        for ($j = 0; $j < $count; $j++) {
+        
+        for ($j = 0; $j < count($data_array) - 1; $j++) {
             $data = array_combine($column_name, $data_array[$j]);
-
             $final_data[$j] = $data;
         }
+
+        // make the every single day data to array of arrays from
+        // only the data start from 5 Jan 2021 providing Putrajaya icu data 
+        $full_data = array_splice($final_data, - 4320); 
+
+        // before 5 Jan 2021 the Putrajaya data was missing 
+        $notfull_data = array_splice($final_data, 4320);
+
+        $full_data_array = array_chunk($full_data, 16);
+        $notfull_data_array = array_chunk($notfull_data, 15)
 
         header("Content-type: application/json");
 
@@ -54,7 +61,7 @@ if ($date_request == "") {
         echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
-                "result" => $final_data, 
+                "result" => $full_data_array, 
             ));
 
     } else {
