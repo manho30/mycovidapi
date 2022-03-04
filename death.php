@@ -153,11 +153,11 @@ if (empty($date_request)) {
             if ($array_number == "") {
                 header("Content-type: application/json");
   
-                http_response_code(400);
+                http_response_code(404);
               
                 echo json_encode(array(
                     "ok"=> false, 
-                    "status" => 400,
+                    "status" => 404,
                     "description" => "Invalid date or no such data from Malaysia Database! Please try again!" , 
                 ));
                 
