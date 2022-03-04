@@ -20,7 +20,7 @@ if(is_null($param)){
         $res = curl_exec($curl);
         curl_close($curl);
         
-        $splited_csv = explode("\n", $res)
+        $splited_csv = explode("\n", $res);
         $data_array = array_map("str_getcsv", $splited_csv);
         
         $data_name = array_shift($data_array);
