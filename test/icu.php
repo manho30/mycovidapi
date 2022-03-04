@@ -121,7 +121,7 @@ if ($date_request == "") {
                 echo json_encode(array(
                     "ok"=> true, 
                     "status" => 200,
-                    "result" => $now_data
+                    "result" => $now_date
                 ));
                 
             // if has parameter for state 
