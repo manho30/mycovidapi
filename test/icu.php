@@ -112,7 +112,7 @@ if ($date_request == "") {
                     //"ok"=> true, 
                     //"status" => 200,
                     //"result" => 
-echo $data_array;
+echo json_encode($data_array);
                 //));
                 
             // if has parameter for state 
