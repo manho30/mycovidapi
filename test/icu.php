@@ -49,7 +49,8 @@ if ($date_request == "") {
         $full_data = array_splice($final_data, - 4320); 
 
         // before 5 Jan 2021 the Putrajaya data was missing 
-        $notfull_data = array_splice($final_data, 4320);
+        $notfull_data = $final_data;
+        array_splice($notfull_data, 4320);
 
         $full_data_array = array_chunk($full_data, 16);
         $notfull_data_array = array_chunk($notfull_data, 15);
