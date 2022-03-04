@@ -91,13 +91,7 @@ if ($date_request == "") {
 
                 $final_data[$j] = $data;
             }
-            // delete 4320 element from data array 
-            // there is missing "putrajaya" information 
-            // before section 4321 data 
-            // 
-            // actually it's 4320 but some 
-            // unknown isue it will 
-            // skip 1 day data
+            
             $full_data = array_splice($final_data, - 4305); 
           
             $full_data_array = array_chunk($full_data, 16);
@@ -116,8 +110,8 @@ if ($date_request == "") {
 
                 echo json_encode(array(
                     "ok"=> true, 
-                    "status" => 200,
-                    "result" => $now_data
+                    "status" => 2000,
+                    "result" => $full_data
                 ));
                 
             // if has parameter for state 
