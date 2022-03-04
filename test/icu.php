@@ -44,19 +44,19 @@ if ($date_request == "") {
             $final_data[$j] = $data;
         }
         
-        // make the every single day data to array of arrays from
-        // only the data start from 5 Jan 2021 providing Putrajaya icu data 
-        $full_data = $final_data;
-        $final_full_data = array_splice($full_data, 4320); 
+//        make the every single day data to array of arrays from
+//        only the data start from 5 Jan 2021 providing Putrajaya icu data 
+//        $full_data = $final_data;
+//        $final_full_data = array_splice($full_data, 4320); 
 
-        // before 5 Jan 2021 the Putrajaya data was missing 
-        $final_notfull_data = $final_data;
-        $array_splice($final_notfull_data, 4320);
+//        before 5 Jan 2021 the Putrajaya data was missing 
+//        $final_notfull_data = $final_data;
+//        $array_splice($final_notfull_data, 4320);
 
-        $full_data_array = array_chunk($final_full_data, 16);
-        $notfull_data_array = array_chunk($final_notfull_data, 15);
+//        $full_data_array = array_chunk($final_full_data, 16);
+//        $notfull_data_array = array_chunk($final_notfull_data, 15);
 
-        $final_data = array_merge($full_data_array, $notfull_data_array);
+//        $final_data = array_merge($full_data_array, $notfull_data_array);
         header("Content-type: application/json");
 
         http_response_code(200);
@@ -64,7 +64,7 @@ if ($date_request == "") {
         echo json_encode(array(
                 "ok"=> true, 
                 "status" => 200,
-                "result" => $full_data_array, 
+                "result" => $final_data, //$full_data_array, 
         ));
 
     } else {
