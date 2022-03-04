@@ -28,11 +28,11 @@ if(is_null($param)){
         
         $name_array = [];
         foreach ($data_name as $name) {
-            $name_array[] = $label;
+            $name_array[] = $name;
         }
-        
+        $final_data = [];
         for ($i = 0; $i < $count; $i++) {
-            $data = array_combine($name_array, $data_array[$j]);
+            $data = array_combine($name_array, $data_array[$i]);
             
             $final_data[$j] = $data;
         }        
