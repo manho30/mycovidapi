@@ -33,8 +33,7 @@ if(is_null($param)){
 
         $final_data = [];
         for ($i = 0; $i < $count; $i++) {
-            $data = array_combine($name_array, $data_array[$i]);
-            
+            $data = array_combine($name_array, $data_array[$i]);           
             $final_data[$j] = $data;
         }        
 
