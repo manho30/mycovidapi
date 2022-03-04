@@ -53,11 +53,11 @@ if ($date_request == "") {
 //      Here start collecting data from 1 July 2021.
 
         $full_data = $final_data;
-        $final_full_data = array_splice($full_data, 7033); 
+        $final_full_data = array_splice($full_data, 7031); 
 
 //      before 5 Jan 2021 the Putrajaya data was missing 
 //      $final_notfull_data = $final_data;
-//      $array_splice($final_notfull_data, 7033);
+//      $array_splice($final_notfull_data, 7031);
 
         $full_data_array = array_chunk($final_full_data, 16);
 //      $notfull_data_array = array_chunk($final_notfull_data, 15);
