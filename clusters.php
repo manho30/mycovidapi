@@ -28,11 +28,12 @@ $count = count($data_array) - 1;
 
 for ($j = 0; $j < $count; $j++) {
     $data = array_combine($column_name, $data_array[$j]);
-
     $final_data[$j] = $data;
 }
 
 header("Content-type: application/json");
+
+http_response_code(200);
 
 echo json_encode(array(
     "ok"=> true, 
