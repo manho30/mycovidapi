@@ -111,7 +111,7 @@ if(!$query || $query == "now"){
             header("Content-type: application/json");
             http_response_code(200);
 
-            if (!beautify) {
+            if (!$beautify) {
 
                 echo json_encode(array(
                     "ok"=> true, 
@@ -126,7 +126,7 @@ if(!$query || $query == "now"){
                     "ok"=> true, 
                     "status" => 200,
                     "result" => $final_data
-                ), JSON_PRETTY_PRINT);
+            ), JSON_PRETTY_PRINT);
                 die();
 
             }
