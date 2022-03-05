@@ -1,9 +1,10 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] != 'GET' || $_SERVER['REQUEST_METHOD'] != 'POST') {
+   
     echo json_encode(array(
         "ok"=> false, 
         "status"=>405, 
-        "message"=> "HTTP request not allow! Please use POST and GET method instead!", 
+        "message"=> $_SERVER['HTTP_HOST'], 
     ));
 } else {
     echo json_encode(array(
