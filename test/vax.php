@@ -36,7 +36,7 @@ if(!query){
         $out_data[$i] = $data;
     }
     
-    $find_latest_data = out_data[count($out_data) - 1];
+    $find_latest_data = $out_data[count($out_data) - 1];
     $final_data = $out_data;
 
     // header for return json data.
