@@ -116,7 +116,7 @@ if(!$query || $query == "now"){
                 echo json_encode(array(
                     "ok"=> true, 
                     "status" => 200,
-                    "result" => $final_data
+                    "result" => $data_array//$final_data
                 ));
                 die();
 
