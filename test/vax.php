@@ -30,6 +30,7 @@ if(!query){
     }
 
     // add variable name to every single data.
+    $out_data = [];
     for ($i = 0; $i < count($data_array) - 1; $i++) {
         $data = array_combine($variable_name, $data_array[$i]);
         $out_data[$i] = $data;
