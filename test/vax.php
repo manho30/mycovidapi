@@ -104,16 +104,6 @@ if(!$query || $query == "now"){
                 $out_data[$i] = $data;
             }
 
-            //foreach ($variable_list as $variable) {
-            //    $variable_name[] = $variable;
-            //}
-            
-            $date_data = [];
-            for ($i = 0; $i < count($data_array) - 1; $i++) {
-                $list_date_data = array_shift($data_array[$i]);
-                $date_data[i] = $list_date_data;
-            }
-
             // change data to array form
             // $final_data = array_chunk($out_data, count($out_data));
 
@@ -126,7 +116,7 @@ if(!$query || $query == "now"){
                 echo json_encode(array(
                     "ok"=> true, 
                     "status" => 200,
-                    "result" => $date_data//$final_data
+                    "result" => $final_data
                 ));
                 die();
 
