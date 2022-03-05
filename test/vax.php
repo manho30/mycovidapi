@@ -3,7 +3,7 @@
 $query = $_GET["date"];
 
 // return default data (latest data ) if no specify query
-if(!query){
+if(!$query){
     $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv";
 
     $curl = curl_init($url);
