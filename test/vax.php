@@ -23,22 +23,22 @@ if(!query){
     // remove variable elements from the first line
     $variable_list = array_shift($data_array);
 
-    // list all variables in an array 
+    // list all variables in an array.
     $variable_name = []; 
     foreach ($variable_list as $variable) {
         $variable_name[] = $variable;
     }
 
-    // add variable name to every single data 
+    // add variable name to every single data.
     for ($i = 0; $i < count($data_array) - 1; $i++) {
         $data = array_combine($variable_name, $data_array[$i]);
         $out_data[$i] = $data;
     }
     
-    $find_latest_data = out_data[count(out_data) - 1];
-    $final_data = out_data;
+    $find_latest_data = out_data[count($out_data) - 1];
+    $final_data = $out_data;
 
-    // header for return json data
+    // header for return json data.
     header("Content-type: application/json");
     http_response_code(200);
 
