@@ -104,8 +104,8 @@ if(!$query || $query == "now"){
                 $out_data[$i] = $data;
             }
 
-            // make every single day json data as array of array form
-            $final_data = array_chunk($out_data, 1);
+            // change data to array form
+            $final_data = array_chunk($out_data, count($out_data));
 
             // header for return json data.
             header("Content-type: application/json");
