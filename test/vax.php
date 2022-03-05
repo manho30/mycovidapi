@@ -64,7 +64,7 @@ if(!$query || $query == "now"){
             "ok"=> true, 
             "status" => 200,
             "result" => $final_data
-        ));
+        ), JSON_PRETTY_PRINT);
 
         die();
 
@@ -111,12 +111,25 @@ if(!$query || $query == "now"){
             header("Content-type: application/json");
             http_response_code(200);
 
+            if (!beautify) {
+
+                echo json_encode(array(
+                    "ok"=> true, 
+                    "status" => 200,
+                    "result" => $final_data
+                ));
+                die();
+
+            } else {
+
             echo json_encode(array(
-                "ok"=> true, 
-                "status" => 200,
-                "result" => $final_data
-            ));
-            die();
+                    "ok"=> true, 
+                    "status" => 200,
+                    "result" => $final_data
+                ), JSON_PRETTY_PRINT);
+                die();
+
+            }
         } 
     }
 }
