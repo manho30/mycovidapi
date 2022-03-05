@@ -182,7 +182,7 @@ if(!$query || $query == "now"){
                 echo json_encode(array(
                     "ok"=> false, 
                     "status" => 404,
-                    "result" => "The data you requested could not be found in the Malaysia Ministry of Health database, please try again! 
+                    "result" => "The data you requested could not be found in the Malaysia Ministry of Health database, please try again!" 
                 ));
 
                 die();
