@@ -172,7 +172,7 @@ if(!$query || $query == "now"){
 
             // no data found
             // 找不到与所提供参数相同的数据。
-            if (!data_index) {
+            if (!$data_index) {
 
                 // header for return json data.
                 // 返回 json 数据的头部信息。
