@@ -105,7 +105,7 @@ if(!$query || $query == "now"){
             }
 
             // change data to array form
-            // $final_data = array_chunk($out_data, count($out_data));
+            $final_data = array_chunk($out_data, 1);
 
             // header for return json data.
             header("Content-type: application/json");
