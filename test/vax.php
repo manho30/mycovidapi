@@ -110,7 +110,8 @@ if(!$query || $query == "now"){
             
             $date_data = [];
             for ($i = 0; $i < count($data_array) - 1; $i++) {
-                $date_data = array_shift($data_array[i])
+                $list_date_data = array_shift($data_array[$i]);
+                $date_data[i] = $list_date_data;
             }
 
             // change data to array form
