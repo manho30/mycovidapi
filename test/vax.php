@@ -36,7 +36,7 @@ if(!$query){
         $out_data[$i] = $data;
     }
     
-    $find_latest_data = $out_data[count($out_data) - 1];
+    $find_latest_data = $out_data[count(json_decode(json_encode($out_data))) - 1];
     $final_data = $out_data;
 
     // header for return json data.
@@ -46,7 +46,7 @@ if(!$query){
     echo json_encode(array(
         "ok"=> true, 
         "status" => 200,
-        "result" => "$final_data", 
+        "result" => $final_data
     ));
 }
 ?>
