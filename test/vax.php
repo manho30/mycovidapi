@@ -111,7 +111,7 @@ if(!$query || $query == "now"){
             header("Content-type: application/json");
             http_response_code(200);
 
-            if (!$beautify || $beautify == "false" || $beautifully == false) {
+            if (!$beautify || $beautify == "false" || $beautify == false) {
 
                 echo json_encode(array(
                     "ok"=> true, 
