@@ -197,7 +197,7 @@ if(!$query || $query == "now"){
                     echo json_encode(array(
                         "ok"=> true, 
                         "status" => 200,
-                        "result" => out_data[$data_index]
+                        "result" => $out_data[$data_index]
                     ));
 
                     die();
@@ -212,7 +212,7 @@ if(!$query || $query == "now"){
                     echo json_encode(array(
                         "ok"=> true, 
                         "status" => 200,
-                        "result" => out_data[$data_index]
+                        "result" => $out_data[$data_index]
                     ), JSON_PRETTY_PRINT );
 
                     die();
