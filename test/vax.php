@@ -36,8 +36,9 @@ if(!$query){
         $out_data[$i] = $data;
     }
     
+    // return the last element from array 
     $find_latest_data = $out_data[count(json_decode(json_encode($out_data))) - 1];
-    $final_data = $out_data;
+    $final_data = $find_latest_data;
 
     // header for return json data.
     header("Content-type: application/json");
