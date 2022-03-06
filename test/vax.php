@@ -108,7 +108,7 @@ if(!$query || $query == "now"){
 
         // return the last element from array 
         $state_array = array_chunk($out_data, 16);
-        $find_latest_data = $out_data[count(json_decode(json_encode($state_data))) - 1];
+        $find_latest_data = $out_data[count($state_data) - 1];
         $final_data = $find_latest_data;
 
         // header for return json data.
