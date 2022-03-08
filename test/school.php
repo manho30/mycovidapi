@@ -1,4 +1,9 @@
 <?php
+
+if ($_SERVER['REQUEST_METHOD'] !='POST') {
+    die();
+}
+
 $url = "https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_school.csv";
 
 $curl = curl_init($url);
