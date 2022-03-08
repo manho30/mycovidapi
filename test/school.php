@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] !='POST' || $_SERVER['REQUEST_METHOD'] != 'GET') {
+if ($_SERVER['REQUEST_METHOD'] =='DELETE' || $_SERVER['REQUEST_METHOD'] == 'PUT') {
     header("Content-type: application/json");
 
     http_response_code(405);
