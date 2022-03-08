@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !='POST' || $_SERVER['REQUEST_METHOD'] != 'GET') 
     echo json_encode(array(
         "ok"=> false, 
         "status" => 405,
-        "message" => "Method not accepted, use GET or POST instead! , 
+        "message" => "Method not accepted, use GET or POST instead!" , 
     ));
     die();
 }
