@@ -6,9 +6,9 @@ Malaysia Covid-19 programs.
 
 Once deverloper sent a request, 
 the Web API will send back a json
-formated data
+formated data. 
 
-Powered by PHP
+
 
 ## Usage
 
@@ -22,7 +22,7 @@ Operate independently
 - `mycovidapi.herokuapp.com/`
 
 All the [Supported Queries](#method) can be normal using 
-while making request to both of MyCovid Data API
+while making request to both of MyCovid Data API. 
 
 ### Making requests
 All queries to the MyCovid API must be served over 
@@ -44,6 +44,16 @@ Supported `GET` HTTP methods by passing parameters in MyCovid API requests:
  - URL query string 
 
 ## Method
+Providing data from Malaysia MoH 
+- [Daily Confirmed Cases](#cases)
+- [Vaccination By State](#state)
+- [Vaccination Data](#vax)
+- [Death](#death)
+- [Clusters](#clusters)
+- [School Vaccination](#school)
+- [ICU](#icu)
+- [PKRC](#pkrc)
+- [Population in Malaysia and every state](#population)
 ### Cases
 
 Get the confirmed Covid-19 case(s) 
@@ -150,8 +160,8 @@ fetch("http://mycovidapi.herokuapp.com/death.php?date=now)
 | now         | date=now          | Get today's data         |
 | yyyy/mm/dd  | date=2022-01-31   | Get a specific date data |
 
-### Credit 
-Credit to [samleong123](https://github.com/samleong123/COVID-19-Malaysia-API)
+
+
 
 
 ## Data source
