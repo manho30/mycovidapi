@@ -49,8 +49,49 @@ if (empty($date)) {
     echo json_encode(array(
         "ok" => false,
         "status" => 400,
-        "message" => json_decode($str)//"Parameter in yyyy-mm-dd was required",
-    ), JSON_UNESCAPED_SLASHES);
+        "message" => array(
+            "type" => "line", 
+            "data" => array(
+                "labels" => array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"),
+                "datasets" => array(
+                    array(
+                        "data" => array(12,6,5,18,12,20,50,80,90,78,24,67), 
+                        "fill" => false, 
+                        "borderColor" => $color, 
+                        "borderWidth" => $width,
+                        "pointRadius" => $point
+                    )
+                ) 
+            ), 
+            "options" => array(
+                "legend" => array(
+                    "display" => false
+                ),
+                "scales" => array(
+                    "xAxes" => array(
+                        array(
+                            "display" => true,
+                            "gridLines" => array(
+                                "display" => false,                        
+                            ),
+                        )
+                    ), 
+                    "yAxes" => array(
+                        array(
+                            "display" => true,
+                            "gridLines" => array(
+                                "display" => false,                        
+                            ),
+                        )
+                    )
+                ), 
+                "title" => array(
+                    "text" => "Covid-19data",
+                    "display" => true,
+                ),
+            )
+        ),
+    ));
     
 } else {
     
