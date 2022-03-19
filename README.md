@@ -13,11 +13,6 @@ formated data.
 ## Usage
 
 ### Base Url 
-Providing 2 interfaces, non-interfering with each other. 
-Operate independently
-
-- `manho30.herokuapp.com/`
-
 
 - `mycovidapi.herokuapp.com/`
 
@@ -61,7 +56,7 @@ Get the confirmed Covid-19 case(s)
 *Example Code*
 
 ``` javascript
-fetch("http://mycovidapi.herokuapp.com/cases.php?date=now)
+fetch("https://mycovidapi.herokuapp.com/cases.php?date=now)
     .then(response => response.json())
     .then(res => console.log(res))
 ```
@@ -91,7 +86,7 @@ information in every state
 **Example Code**
 
 ``` javascript
-fetch("http://mycovidapi.herokuapp.com/state.php?date=now&state=Johor)
+fetch("https://mycovidapi.herokuapp.com/state.php?date=now&state=Johor)
     .then(response => response.json())
     .then(res => console.log(res))
 ```
@@ -121,7 +116,7 @@ fetch("http://mycovidapi.herokuapp.com/state.php?date=now&state=Johor)
 ### Vax
 Get the Covid-19 vaccination data 
 ``` javascript
-fetch("http://mycovidapi.herokuapp.com/state.php?date=now)
+fetch("https://mycovidapi.herokuapp.com/state.php?date=now)
     .then(response => response.json())
     .then(res => console.log(res))
 ```
@@ -143,7 +138,7 @@ fetch("http://mycovidapi.herokuapp.com/state.php?date=now)
 RIP... Get death data due to Covid-19
 
 ``` javascript
-fetch("http://mycovidapi.herokuapp.com/death.php?date=now)
+fetch("https://mycovidapi.herokuapp.com/death.php?date=now)
     .then(response => response.json())
     .then(res => console.log(res))
 ```
