@@ -95,7 +95,7 @@ if (empty($date)) {
                 ),
             )
         )
-    $image = file_get_contents('https://quickchart.io/chart?c= . urlencode($chart_config);
+    $image = file_get_contents('https://quickchart.io/chart?c=' . urlencode($chart_config));
     http_response_code(200);
     header('Content-type: image/png;');
     header("Content-Length: " . strlen($image));
