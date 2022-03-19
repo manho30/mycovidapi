@@ -1,6 +1,22 @@
 <?php
 // param
 $date_request = $_GET["date"];
+
+// method detect
+if ($_SERVER['REQUEST_METHOD'] =='DELETE' || $_SERVER['REQUEST_METHOD'] == 'PUT') {
+    header("Content-type: application/json");
+
+    http_response_code(405);
+
+    echo json_encode(array(
+        "ok"=> false, 
+        "status" => 405,
+        "message" => "Method not accepted, use GET or POST instead!" , 
+    ));
+    die();
+} 
+
+
 if ($date_request == "") {
     header("Content-type: application/json");
 
@@ -41,10 +57,10 @@ if ($date_request == "") {
 
         $count = count($data_array) - 1;
 
-        for ($j = 0; $j < $count; $j++) {
-            $data = array_combine($column_name, $data_array[$j]);
+        for ($i = 0; $i < $count; $i++) {
+            $data = array_combine($column_name, $data_array[$i]);
 
-            $final_data[$j] = $data;
+            $final_data[$i] = $data;
         }
 
         header("Content-type: application/json");
@@ -87,10 +103,10 @@ if ($date_request == "") {
 
             $count = count($data_array) - 1;
 
-            for ($j = 0; $j < $count; $j++) {
-                $data = array_combine($column_name, $data_array[$j]);
+            for ($i = 0; $i < $count; $i++) {
+                $data = array_combine($column_name, $data_array[$i]);
 
-                $final_data[$j] = $data;
+                $final_data[$i] = $data;
             }
 
             header("Content-type: application/json");
@@ -173,10 +189,10 @@ if ($date_request == "") {
 
             $count = count($data_array) - 1;
 
-            for ($j = 0; $j < $count; $j++) {
-                $data = array_combine($column_name, $data_array[$j]);
+            for ($i = 0; $i < $count; $i++) {
+                $data = array_combine($column_name, $data_array[$i]);
 
-                $final_data[$j] = $data;
+                $final_data[$i] = $data;
             }
 
             header("Content-type: application/json");
