@@ -49,7 +49,7 @@ if (empty($date)) {
     echo json_encode(array(
         "ok" => false,
         "status" => 400,
-        "message" => rawurlencode(array(
+        "message" => rawurlencode(strval(array(
             "type" => "line", 
             "data" => array(
                 "labels" => array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"),
@@ -90,7 +90,7 @@ if (empty($date)) {
                     "display" => true,
                 ),
             )
-        ))
+        )))
     ));
     
 } else {
