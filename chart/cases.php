@@ -45,11 +45,11 @@ if (empty($date)) {
     header("Content-type: application/json");
 
     http_response_code(400);
-    $str = '{"type":"line","data":{"labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"datasets":[{"data":[12,6,5,18,12,20,50,80,90,78,24,67],"fill":false,"borderColor":getGradientFillHelper("vertical",["#fafa6e","#ecf76f","#dff470","#d2f072","#c5ed74","#b9e976","#ace578","#a0e17b","#95dd7d","#89d880","#7ed482","#73cf84","#68ca87","#5dc589","#52c18a","#48bc8c","#3eb78d"]),"borderWidth":3,"pointRadius":0,}]},"options":{"legend":{"display":false},"scales":{"xAxes":[{"display":true,"gridLines":{"display":false,},}],"yAxes":[{"display":true,"gridLines":{"display":false,},}]},"title":{"text":"Covid-19data","display":true,},}}';
+    $str = json_encode('{"type":"line","data":{"labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"datasets":[{"data":[12,6,5,18,12,20,50,80,90,78,24,67],"fill":false,"borderColor":getGradientFillHelper("vertical",["#fafa6e","#ecf76f","#dff470","#d2f072","#c5ed74","#b9e976","#ace578","#a0e17b","#95dd7d","#89d880","#7ed482","#73cf84","#68ca87","#5dc589","#52c18a","#48bc8c","#3eb78d"]),"borderWidth":3,"pointRadius":0,}]},"options":{"legend":{"display":false},"scales":{"xAxes":[{"display":true,"gridLines":{"display":false,},}],"yAxes":[{"display":true,"gridLines":{"display":false,},}]},"title":{"text":"Covid-19data","display":true,},}}');
     echo json_encode(array(
         "ok" => false,
         "status" => 400,
-        "message" => $str//"Parameter in yyyy-mm-dd was required",
+        "message" => json_decode($str)//"Parameter in yyyy-mm-dd was required",
     ), JSON_UNESCAPED_SLASHES);
     
 } else {
