@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="description" content="MyCovid API is an HTTP request based interface created by PHP for developers easier on building programme. Powered by MoH Malaysia">
+        <meta name="keywords" content="api, COVID-19 API free, malaysia covid data, covid api, covid-19 json api, covid19, COVID vaccine"> 
+        <title> MyCovid API </title>
+        <link rel="icon" type="image/x-icon" href="https://manho30.github.io/manho.ico">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css"/>
+        <script src="https://kit.fontawesome.com/ba1aa6d09b.js" crossorigin="anonymous"></script> 
+    </head>
+    <body>
+        <nav>
+            <a href="#/README.md"><i class="fa-solid fa-file-lines"></i></a>
+            <a href="#/example.md"><i class="fa-solid fa-code"></i></a>
+            <a href="https://manho30.github.io"><i class="fa-solid fa-house"></i></a>
+        </nav>
+
+        <div id="app"></div>
+
+        <script>
+            window.$docsify = {
+                footer: {
+                    copy: '<span>&copy;</span>',
+                    auth: '<strong><a href="https://github.com/manho30" target="_blank">Man Ho</a></strong> all right reserved' , 
+                    pre: '<hr/>',
+                    style: 'font-size: 18px; text-align: center;',
+                },
+            }
+        </script>
+    
+        <!--Footer-->
+        <script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+
+        <!--Back to top-->
+        <script src="https://cdn.jsdelivr.net/gh/wugenqiang/NoteBook@master/plugin/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/wugenqiang/NoteBook@master/plugin/jquery.goup.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.goup({
+                    trigger: 100,
+                    bottomOffset: 52,
+                    locationOffset: 25,
+                    titleAsText: true
+                });
+            });
+        </script>
+
+        <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    </body>
+</html>
