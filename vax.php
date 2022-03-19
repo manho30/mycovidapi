@@ -2,6 +2,21 @@
 // parameter
 $date_request = $_GET["date"];
 
+// method detect
+if ($_SERVER['REQUEST_METHOD'] =='DELETE' || $_SERVER['REQUEST_METHOD'] == 'PUT') {
+    header("Content-type: application/json");
+
+    http_response_code(405);
+
+    echo json_encode(array(
+        "ok"=> false, 
+        "status" => 405,
+        "message" => "Method not accepted, use GET or POST instead!" , 
+    ));
+    die();
+} 
+
+
 if (empty($date_request)) {
     header("Content-type: application/json");
 
