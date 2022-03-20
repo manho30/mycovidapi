@@ -73,7 +73,7 @@ if (!$date) {
         } 
 
         $index = array_search($date, array_column(json_decode(json_encode($output), true), "date")); 
-/*
+
         $msg = "";
         $code = 404;
         $ok = false;
@@ -85,9 +85,9 @@ if (!$date) {
             $code = 200;
             $ok = true;
         }
-*/ 
+ 
         header("Content-type: application/json");
-        http_response_code(code);
+        http_response_code(400);
         
         echo json_encode(array(
             "ok" => true,
