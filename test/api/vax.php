@@ -12,9 +12,9 @@ if (!$date) {
     $csv = array_map("str_getcsv", explode("\n", $src));
     
     $variable = [];
-    $var = array_shift($csv);
+    //$var = array_shift($csv);
 
-    foreach ($var as $head_name){
+    foreach ($csv[0] as $head_name){
         $variable[] = $head_name;
     }
     
