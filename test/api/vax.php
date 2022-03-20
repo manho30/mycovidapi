@@ -77,7 +77,7 @@ if (!$date) {
         if (!$index) {
 
             header("Content-type: application/json");
-            http_response_code(404)
+            http_response_code(404);
 
             echo json_encode(array(
                 "ok" => false,
