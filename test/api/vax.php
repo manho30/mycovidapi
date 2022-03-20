@@ -1,6 +1,6 @@
 <?php
 
-//include_once '../../src/path/source.php';
+include_once '../../src/path/source.php';
 
 $date = $_GET["date"];
 /**
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] =='DELETE' || $_SERVER['REQUEST_METHOD'] == 'PUT'
  */ 
 if (!$date) {
 
-    $src = file_get_contents("https://raw.githubusercontent.com/CITF-Malaysia/citf-public/main/vaccination/vax_malaysia.csv");
+    $src = file_get_contents($vax_my);
     $csv = array_map("str_getcsv", explode("\n", $src));
     
     $variable = [];
