@@ -52,7 +52,7 @@ if (!$school) {
         $code_index = array_search($date, array_column(json_decode(json_encode($output), true), "code")); 
         $school_index = array_search($date, array_column(json_decode(json_encode($output), true), "school")); 
 
-        if (!$code_index || !$school_index) {
+        if (!$code_index && !$school_index) {
 
             header("Content-type: application/json");
             http_response_code(404);
