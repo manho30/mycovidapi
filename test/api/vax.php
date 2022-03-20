@@ -74,26 +74,26 @@ if (!$date) {
 
         $index = array_search($date, array_column(json_decode(json_encode($output), true), "date")); 
 
-        $msg = "";
-        $code = 404;
-        $ok = false;
-
         if (!$index) {
-            $msg = "Invalid query! Could not found in Malaysia Repository! Please try again!";
+
+            header("Content-type: application/json");
+            http_response_code(404)
+
+            echo json_encode(array(
+                "ok" => false,
+                "status" => 404,
+                "message" => "Invalid query! Could not found in Malaysia Repository! Please try again!"
+            ));
         } else {
-            $msg = json_decode($output)[$index];
-            $code = 200;
-            $ok = true;
-        }
- 
-        header("Content-type: application/json");
-        http_response_code($code);
-        
-        echo json_encode(array(
-            "ok" => $ok,
-            "status" => $code,
-            "message" => $output[$index]
-        ));
+            header("Content-type: application/json");
+            http_response_code(200)
+
+            echo json_encode(array(
+                "ok" => true,
+                "status" => 200,
+                "message" => $output[$index]
+            ));
+        }       
     } 
 }
 ?>
