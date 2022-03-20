@@ -65,7 +65,7 @@ if (!$school) {
 
         } else if($code_index || $school_index){
 
-            $value = $code_index == false ? return false : return true;
+            $value = $code_index == false ? false : true;
 
             $index;
 
