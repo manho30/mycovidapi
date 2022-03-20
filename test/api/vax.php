@@ -24,12 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] =='DELETE' ||
  */ 
 if (!$date) {
 
-    $src = fopen($vax_my, "r");
-    
-    $csv = [];
-    while(!feof($src)) {
-        $csv[] = fgets($src);
-    }
+    $src = file_get_contents($vax_my);
+    $csv = array_map("str_getcsv", explode("\n", $csv));
     
     $head = array_shift($csv);
     $variable = [];
