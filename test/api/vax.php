@@ -3,7 +3,7 @@
 //include_once '../../src/path/source.php';
 
 $date = $_GET["date"];
-/*
+
 if ($_SERVER['REQUEST_METHOD'] =='DELETE' || $_SERVER['REQUEST_METHOD'] == 'PUT') {
     header("Content-type: application/json");
 
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] =='DELETE' || $_SERVER['REQUEST_METHOD'] == 'PUT'
     ));
     die();
 }
-*/
+
 /* return latest data if 
  * no query is specific. 
  * @return {object} 
