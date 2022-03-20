@@ -12,13 +12,14 @@ if (!$date) {
     $csv = array_map("str_getcsv", explode("\n", $src));
     
     $variable = [];
-    foreach ($csv[0] as $head_name){
+    $var = array_shift($data_array);
+
+    foreach ($var as $head_name){
         $variable[] = $head_name;
     }
     
     $output = [];
     for ($i = 0; $i < count($csv) - 1; $i++){
-        if ($i === 0) {continue;}
         $combines = array_combine($variable, $csv[$i]);
         $output[$i] = $combines;
     } 
