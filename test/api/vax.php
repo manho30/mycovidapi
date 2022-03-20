@@ -28,7 +28,7 @@ if (!$date) {
     echo json_encode(array(
         "ok" => true,
         "status" => 200,
-        "message" => $output[length - 1]
+        "message" => $output[count($output) - 1]
     ));
     
 }
