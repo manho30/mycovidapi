@@ -72,7 +72,7 @@ if (!$date) {
             $output[$i] = $combines;
         } 
 
-        $index = array_search($date, array_column(json_decode($json_encode(output), true), "date")); 
+        $index = array_search($date, array_column(json_decode(json_encode($output), true), "date")); 
 
         $msg = "";
         $code = 404;
