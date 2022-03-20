@@ -74,24 +74,25 @@ if (!$date) {
 
         $index = array_search($date, array_column(json_decode($json_encode(output), true), "date")); 
 
-        $status = "";
+        $msg = "";
         $code = 404;
         $ok = false;
 
-        if (!index) {
-            $status = "Invalid query! Could not found in Malaysia Repository! Please try again!";
+        if (!$index) {
+            $msg = "Invalid query! Could not found in Malaysia Repository! Please try again!";
         } else {
-            $status = output[index];
+            $msg = json_decode(output)[$index];
             $code = 200;
             $ok = true;
-        } 
+        }
+ 
         header("Content-type: application/json");
         http_response_code(code);
         
         echo json_encode(array(
             "ok" => $ok,
-            "status" => status,
-            "message" => $status
+            "status" => $code,
+            "message" => $msg
         ));
     } 
 }
