@@ -26,14 +26,14 @@ if (!$date) {
     $src = file_get_contents("https://raw.githubusercontent.com/CITF-Malaysia/citf-public/main/vaccination/vax_malaysia.csv");
     $csv = array_map("str_getcsv", explode("\n", $src));
     
-    $head = array_shift($csv);
     $variable = [];
-    foreach ($head as $head_name){
+    foreach ($scv[0] as $head_name){
         $variable[] =$head_name;
     }
     
     $output = [];
     for ($i = 0; $i < count($csv) - 1; $i++){
+        if ($i === 0) {continue;}
         $combines = array_combine($variable, $csv[$i]);
         $output[$i] = $combines;
     } 
