@@ -1,6 +1,6 @@
 <?php
 
-include_once '../src/path/source.php';
+include_once '../../src/path/source.php';
 
 $date = $_GET["date"];
 
