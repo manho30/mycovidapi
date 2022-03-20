@@ -12,7 +12,6 @@ if (!$date) {
     $csv = array_map("str_getcsv", explode("\n", $src));
     
     $variable = [];
-    //$var = array_shift($csv);
 
     foreach ($csv[0] as $head_name){
         $variable[] = $head_name;
@@ -29,7 +28,7 @@ if (!$date) {
     echo json_encode(array(
         "ok" => true,
         "status" => 200,
-        "message" => $output
+        "message" => $output[length - 1]
     ));
     
 }
