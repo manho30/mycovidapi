@@ -49,8 +49,8 @@ if (!$school) {
             $output[$i] = $combines;
         } 
 
-        $code_index = array_search($date, array_column(json_decode(json_encode($output), true), "code")); 
-        $school_index = array_search($date, array_column(json_decode(json_encode($output), true), "school")); 
+        $code_index = array_search($school, array_column(json_decode(json_encode($output), true), "code")); 
+        $school_index = array_search($school, array_column(json_decode(json_encode($output), true), "school")); 
 
         if (!$code_index && !$school_index) {
 
