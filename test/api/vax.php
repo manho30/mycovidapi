@@ -86,7 +86,7 @@ if (!$date) {
             ));
         } else {
             header("Content-type: application/json");
-            http_response_code(200)
+            http_response_code(200);
 
             echo json_encode(array(
                 "ok" => true,
