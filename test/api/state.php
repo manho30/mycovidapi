@@ -32,7 +32,8 @@ if (($handle = fopen("https://raw.githubusercontent.com/manho30/covid19-public/m
     }
     $json = json_encode($masterData);
     fclose($handle);
-    print_r($json);
+    header("Content-type: application/json"); 
+    echo ($json);
 }
 
 ?>
