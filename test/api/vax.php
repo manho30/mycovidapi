@@ -1,11 +1,10 @@
 <?php
 
-include_once '../../src/path/source.php';
+//include_once '../../src/path/source.php';
 
 $date = $_GET["date"];
-
-if ($_SERVER['REQUEST_METHOD'] =='DELETE' || 
-   $_SERVER['REQUEST_METHOD'] == 'PUT') {
+/*
+if ($_SERVER['REQUEST_METHOD'] =='DELETE' || $_SERVER['REQUEST_METHOD'] == 'PUT') {
     header("Content-type: application/json");
 
     http_response_code(405);
@@ -17,15 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] =='DELETE' ||
     ));
     die();
 }
-
+*/
 /* return latest data if 
  * no query is specific. 
  * @return {object} 
  */ 
 if (!$date) {
 
-    $src = file_get_contents($vax_my);
-    $csv = array_map("str_getcsv", explode("\n", $csv));
+    $src = file_get_contents("https://raw.githubusercontent.com/CITF-Malaysia/citf-public/main/vaccination/vax_malaysia.csv");
+    $csv = array_map("str_getcsv", explode("\n", $src));
     
     $head = array_shift($csv);
     $variable = [];
