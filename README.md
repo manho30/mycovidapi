@@ -1,5 +1,8 @@
 ## MyCovid Data API
 
+> **Note**
+> MyCovid Data API will be fully suspended in September 2022. Please Use [v2](https://mycovidapi2.herokuapp.com) instead
+
 The MyCovid API is an HTTP-based interface 
 created for developers keen on building about
 Malaysia Covid-19 programs.
